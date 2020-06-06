@@ -4,7 +4,7 @@
     <div class="contain">
       <el-form :label-position="labelPosition" label-width="60px" :model="formLabelAlign">
         <el-form-item label="账号">
-          <el-input v-model="formLabelAlign.accout"></el-input>
+          <el-input v-model="formLabelAlign.account"></el-input>
         </el-form-item>
         <el-form-item label="密码">
           <el-input v-model="formLabelAlign.password" show-password></el-input>
@@ -35,7 +35,7 @@ export default {
     return {
       labelPosition: 'left',
       formLabelAlign: {
-        accout: '',
+        account: '',
         password: ''
       },
       radio: '1',
@@ -45,7 +45,7 @@ export default {
   methods: {
     onSubmit () {
       console.log('submit')
-      //       // yinglongyhy
+
       if (this.formLabelAlign.account === '' || this.formLabelAlign.password === '') {
         alert('账号或密码不能为空')
       } else {
@@ -73,12 +73,13 @@ export default {
           axios.post('/api/admins/login', this.formLabelAlign)
             .then(res => {
               console.log(res)
-              this.userToken = res.headers.authorization
-              console.log(this.userToken)
+              this.adminToken = res.headers.authorization
+              console.log(this.adminToken)
 
+              this.$store.commit('changeaLogin', this.adminToken)
               // 将用户token保存到vuex中, 并设置跳转  yinglongyhy
               // this.changeLogin({ Authorization: _this.userToken })
-              // _this.$router.push("/home")
+              this.$router.push('/adminHome')
 
               alert('登陆成功')
             })

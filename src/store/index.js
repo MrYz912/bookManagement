@@ -5,11 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userToken: ''
+    userToken: '',
+    adminToken: ''
   },
   mutations: {
     changuLogin (state, userToken) {
       state.userToken = userToken
+    },
+    changaLogin (state, adminToken) {
+      state.adminToken = adminToken
     }
   }
 })

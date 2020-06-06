@@ -1,22 +1,22 @@
 <template>
   <el-form ref="form" :model="form" label-width="80px" class="form">
     <el-form-item label="身份证号">
-      <el-input v-model="form.name"></el-input>
+      <el-input :model="form.idCard"></el-input>
     </el-form-item>
     <el-form-item label="账号">
-      <el-input v-model="form.name"></el-input>
+      <el-input :model="form.account"></el-input>
     </el-form-item>
     <el-form-item label="密码">
-      <el-input v-model="form.name"></el-input>
+      <el-input :model="form.password"></el-input>
     </el-form-item>
     <el-form-item label="名字">
-      <el-input v-model="form.name"></el-input>
+      <el-input :model="form.name"></el-input>
     </el-form-item>
     <el-form-item label="手机号">
-      <el-input v-model="form.name"></el-input>
+      <el-input :model="form.phoneNumber"></el-input>
     </el-form-item>
     <el-form-item label="邮箱">
-      <el-input v-model="form.name"></el-input>
+      <el-input :model="form.email"></el-input>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit">修改</el-button>
@@ -26,26 +26,37 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'UserInfo',
   data () {
     return {
       form: {
+        idCard: '',
+        account: '',
+        password: '',
         name: '',
-        region: '',
-        date1: '',
-        date2: '',
-        delivery: false,
-        type: [],
-        resource: '',
-        desc: ''
+        phoneNumber: '',
+        email: ''
       }
     }
   },
   methods: {
     onSubmit () {
-      console.log('submit!')
+      console.log('submit')
     }
+  },
+  mounted () {
+    console.log('userInfo')
+    console.log(this.$store.state.userToken)
+    axios.get('/api/users/self', {
+      headers: {
+        Authorization: this.$store.state.userToken
+      }
+    })
+      .then(res => {
+        console.log(res)
+      })
   }
 }
 </script>

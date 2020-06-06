@@ -7,7 +7,7 @@
         <el-input v-model="formLabelAlign.idCard" placeholder="必填"></el-input>
       </el-form-item>
         <el-form-item label="账号">
-          <el-input v-model="formLabelAlign.accout" placeholder="必填"></el-input>
+          <el-input v-model="formLabelAlign.account" placeholder="必填"></el-input>
         </el-form-item>
         <el-form-item label="密码">
           <el-input v-model="formLabelAlign.password" show-password placeholder="必填"></el-input>
@@ -44,7 +44,7 @@ export default {
       labelPosition: 'left',
       formLabelAlign: {
         idCard: '',
-        accout: '',
+        account: '',
         password: '',
         name: '',
         phoneNumber: '',
@@ -55,24 +55,21 @@ export default {
   methods: {
     onSubmit () {
       console.log('submit')
-      //       // yinglongyhy
+
       if (this.formLabelAlign.account === '' || this.formLabelAlign.password === '' ||
       this.formLabelAlign.idCard === '' || this.formLabelAlign.name === '') {
         alert('必填不能为空')
       } else {
         console.log(this.formLabelAlign)
-        axios.post('/api/users/login', this.formLabelAlign)
+        axios.post('/api/users', this.formLabelAlign)
           .then(res => {
             console.log(res)
             this.userToken = res.headers.authorization
             console.log(this.userToken)
 
-            this.$store.commit('changeLogin', this.userToken)
-            // 将用户token保存到vuex中, 并设置跳转  yinglongyhy
-            // this.changeLogin({ Authorization: _this.userToken })
-            // _this.$router.push("/home")
+            this.$router.push('/login')
 
-            alert('登陆成功')
+            alert('注册成功')
           })
           .catch(error => {
             alert('账号或密码错误')

@@ -16,7 +16,7 @@
       </el-header>
 
       <el-main>
-        <el-table :data="tableData">
+        <el-table :data="this.item">
           <el-table-column prop="ISBN" label="ISBN" width="200"></el-table-column>
           <el-table-column prop="name" label="西游记" width="150"></el-table-column>
           <el-table-column prop="author" label="作者" width="150"></el-table-column>
