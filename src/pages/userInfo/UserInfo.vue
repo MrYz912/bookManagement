@@ -1,22 +1,22 @@
 <template>
   <el-form ref="form" :model="form" label-width="80px" class="form">
     <el-form-item label="身份证号">
-      <el-input :model="form.idCard"></el-input>
+      <el-input :model="form.idCard" :placeholder="form.idCard" disabled=""></el-input>
     </el-form-item>
     <el-form-item label="账号">
-      <el-input :model="form.account"></el-input>
+      <el-input :model="form.account" :placeholder="form.account"></el-input>
     </el-form-item>
     <el-form-item label="密码">
       <el-input :model="form.password"></el-input>
     </el-form-item>
     <el-form-item label="名字">
-      <el-input :model="form.name"></el-input>
+      <el-input :model="form.name" :placeholder="form.name"></el-input>
     </el-form-item>
     <el-form-item label="手机号">
-      <el-input :model="form.phoneNumber"></el-input>
+      <el-input :model="form.phoneNumber" :placeholder="form.phoneNumber"></el-input>
     </el-form-item>
     <el-form-item label="邮箱">
-      <el-input :model="form.email"></el-input>
+      <el-input :model="form.email" :placeholder="form.email"></el-input>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit">修改</el-button>
@@ -56,6 +56,8 @@ export default {
     })
       .then(res => {
         console.log(res)
+        this.form = res.data
+        console.log(this.form)
       })
   }
 }

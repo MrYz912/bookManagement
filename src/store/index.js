@@ -9,10 +9,10 @@ export default new Vuex.Store({
     adminToken: ''
   },
   mutations: {
-    changuLogin (state, userToken) {
+    changeuLogin (state, userToken) {
       state.userToken = userToken
     },
-    changaLogin (state, adminToken) {
+    changeaLogin (state, adminToken) {
       state.adminToken = adminToken
     }
   }

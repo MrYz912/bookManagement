@@ -34,6 +34,7 @@ export default {
   data () {
     return {
       labelPosition: 'left',
+      userToken: '',
       formLabelAlign: {
         account: '',
         password: ''
@@ -59,6 +60,7 @@ export default {
               console.log(this.userToken)
 
               this.$store.commit('changeuLogin', this.userToken)
+              console.log(this.$store.state.userToken)
               // 将用户token保存到vuex中, 并设置跳转  yinglongyhy
               // this.changeLogin({ Authorization: _this.userToken })
               this.$router.push('/userHome')

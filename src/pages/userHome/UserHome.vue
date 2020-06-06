@@ -33,6 +33,9 @@ export default {
     UserHeader,
     UserSearch,
     UserList
+  },
+  mounted () {
+    console.log(this.$store.state.userToken)
   }
 }
 </script>
