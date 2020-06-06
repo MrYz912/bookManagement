@@ -34,10 +34,10 @@ export default {
   data () {
     return {
       labelPosition: 'left',
-      userToken: '',
+      userToken: null,
       formLabelAlign: {
-        account: '',
-        password: ''
+        account: null,
+        password: null
       },
       radio: '1',
       sign: '1'
@@ -47,7 +47,7 @@ export default {
     onSubmit () {
       console.log('submit')
 
-      if (this.formLabelAlign.account === '' || this.formLabelAlign.password === '') {
+      if (this.formLabelAlign.account === null || this.formLabelAlign.password === null) {
         alert('账号或密码不能为空')
       } else {
         console.log(this.formLabelAlign)

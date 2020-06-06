@@ -22,14 +22,14 @@ export default {
   data () {
     return {
       form: {
-        name: '',
-        region: '',
-        date1: '',
-        date2: '',
+        name: null,
+        region: null,
+        date1: null,
+        date2: null,
         delivery: false,
         type: [],
-        resource: '',
-        desc: ''
+        resource: null,
+        desc: null
       }
     }
   },

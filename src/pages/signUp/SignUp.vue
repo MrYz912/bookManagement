@@ -43,12 +43,12 @@ export default {
     return {
       labelPosition: 'left',
       formLabelAlign: {
-        idCard: '',
-        account: '',
-        password: '',
-        name: '',
-        phoneNumber: '',
-        email: ''
+        idCard: null,
+        account: null,
+        password: null,
+        name: null,
+        phoneNumber: null,
+        email: null
       }
     }
   },
@@ -56,8 +56,8 @@ export default {
     onSubmit () {
       console.log('submit')
 
-      if (this.formLabelAlign.account === '' || this.formLabelAlign.password === '' ||
-      this.formLabelAlign.idCard === '' || this.formLabelAlign.name === '') {
+      if (this.formLabelAlign.account === null || this.formLabelAlign.password === null ||
+      this.formLabelAlign.idCard === null || this.formLabelAlign.name === null) {
         alert('必填不能为空')
       } else {
         console.log(this.formLabelAlign)

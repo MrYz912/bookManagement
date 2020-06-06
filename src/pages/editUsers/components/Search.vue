@@ -18,8 +18,8 @@ export default {
   name: 'EdituSearch',
   data () {
     return {
-      input: '',
-      select: ''
+      input: null,
+      select: null
     }
   },
   methods: {

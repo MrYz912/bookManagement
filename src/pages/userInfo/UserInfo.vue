@@ -1,22 +1,22 @@
 <template>
   <el-form ref="form" :model="form" label-width="80px" class="form">
     <el-form-item label="身份证号">
-      <el-input :model="form.idCard" :placeholder="form.idCard" disabled=""></el-input>
+      <el-input v-model="form.idCard" disabled=""></el-input>
     </el-form-item>
     <el-form-item label="账号">
-      <el-input :model="form.account" :placeholder="form.account"></el-input>
+      <el-input v-model="form.account" clearable></el-input>
     </el-form-item>
     <el-form-item label="密码">
-      <el-input :model="form.password"></el-input>
+      <el-input v-model="form.password" clearable show-password></el-input>
     </el-form-item>
     <el-form-item label="名字">
-      <el-input :model="form.name" :placeholder="form.name"></el-input>
+      <el-input v-model="form.name" clearable></el-input>
     </el-form-item>
     <el-form-item label="手机号">
-      <el-input :model="form.phoneNumber" :placeholder="form.phoneNumber"></el-input>
+      <el-input v-model="form.phoneNumber" clearable></el-input>
     </el-form-item>
     <el-form-item label="邮箱">
-      <el-input :model="form.email" :placeholder="form.email"></el-input>
+      <el-input v-model="form.email" clearable></el-input>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit">修改</el-button>
@@ -32,33 +32,49 @@ export default {
   data () {
     return {
       form: {
-        idCard: '',
-        account: '',
-        password: '',
-        name: '',
-        phoneNumber: '',
-        email: ''
-      }
+        idCard: null,
+        account: null,
+        password: null,
+        name: null,
+        phoneNumber: null,
+        email: null
+      },
+      pass: null
     }
   },
   methods: {
     onSubmit () {
       console.log('submit')
+      // this.form.password === this.pass ? this.form.password = null : this.form.password = this.form.password
+      axios.put('/api/users', this.form, {
+        headers: {
+          Authorization: this.$store.state.userToken
+        }
+      })
+      // .then(res => {
+      //   res.data = this.form
+      //   console.log(res.data)
+      // })
+      alert('修改成功')
+      this.$store.commit('changeuLogin', null)
+      this.$router.push('/login')
     }
   },
   mounted () {
-    console.log('userInfo')
-    console.log(this.$store.state.userToken)
+    // console.log('userInfo')
+    // console.log(this.$store.state.userToken)
     axios.get('/api/users/self', {
       headers: {
         Authorization: this.$store.state.userToken
       }
     })
       .then(res => {
-        console.log(res)
+        // console.log(res)
         this.form = res.data
         console.log(this.form)
       })
+    this.pass = this.form.password
+    console.log(this.pass)
   }
 }
 </script>

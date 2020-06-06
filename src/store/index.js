@@ -5,8 +5,8 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    userToken: '',
-    adminToken: ''
+    userToken: null,
+    adminToken: null
   },
   mutations: {
     changeuLogin (state, userToken) {

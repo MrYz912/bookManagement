@@ -16,8 +16,8 @@ export default {
   name: 'Search',
   data () {
     return {
-      input: '',
-      select: ''
+      input: null,
+      select: null
     }
   },
   methods: {

@@ -15,8 +15,8 @@ export default {
   name: 'EditaSearch',
   data () {
     return {
-      input: '',
-      select: ''
+      input: null,
+      select: null
     }
   },
   methods: {
