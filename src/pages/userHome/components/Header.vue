@@ -7,14 +7,19 @@
     text-color="black"
     router="true"
   >
-    <el-menu-item index="/">退出</el-menu-item>
-    <el-menu-item index="/userInfo">个人信息</el-menu-item>
+    <el-menu-item index="/userInfo">个人中心</el-menu-item>
+    <el-menu-item index="/" @click="exit">退出登录</el-menu-item>
   </el-menu>
 </template>
 
 <script>
 export default {
-  name: 'UserHeader'
+  name: 'UserHeader',
+  methods: {
+    exit () {
+      this.$store.commit('changeuLogin', null)
+    }
+  }
 }
 </script>
 

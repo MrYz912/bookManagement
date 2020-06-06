@@ -45,24 +45,18 @@ export default {
   methods: {
     onSubmit () {
       console.log('submit')
-      // this.form.password === this.pass ? this.form.password = null : this.form.password = this.form.password
+      this.form.password === this.pass ? this.form.password = null : this.form.password = this.form.password
       axios.put('/api/users', this.form, {
         headers: {
           Authorization: this.$store.state.userToken
         }
       })
-      // .then(res => {
-      //   res.data = this.form
-      //   console.log(res.data)
-      // })
       alert('修改成功')
       this.$store.commit('changeuLogin', null)
       this.$router.push('/login')
     }
   },
   mounted () {
-    // console.log('userInfo')
-    // console.log(this.$store.state.userToken)
     axios.get('/api/users/self', {
       headers: {
         Authorization: this.$store.state.userToken
@@ -71,10 +65,10 @@ export default {
       .then(res => {
         // console.log(res)
         this.form = res.data
+        this.pass = this.form.password
+        console.log(this.pass)
         console.log(this.form)
       })
-    this.pass = this.form.password
-    console.log(this.pass)
   }
 }
 </script>

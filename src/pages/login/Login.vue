@@ -79,6 +79,7 @@ export default {
               console.log(this.adminToken)
 
               this.$store.commit('changeaLogin', this.adminToken)
+              console.log(this.$store.state.adminToken)
               // 将用户token保存到vuex中, 并设置跳转  yinglongyhy
               // this.changeLogin({ Authorization: _this.userToken })
               this.$router.push('/adminHome')
