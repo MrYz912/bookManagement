@@ -1,9 +1,8 @@
 <template>
   <div>
-    <el-table :data="tableData">
+    <el-table :data="this.item">
       <el-table-column prop="id" label="id" width="150"></el-table-column>
       <el-table-column prop="account" label="账号" width="150"></el-table-column>
-      <el-table-column prop="password" label="密码" width="150"></el-table-column>
       <el-table-column prop="name" label="名字" width="100"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
@@ -14,41 +13,17 @@
         </template>
       </el-table-column>
     </el-table>
-    <el-pagination
-      background
-      layout="prev, pager, next"
-      :total="100"
-      class="footer">
-    </el-pagination>
   </div>
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'EditaList',
   data () {
     return {
-      tableData: [{
-        id: '3456789',
-        account: '3456',
-        password: '123456',
-        name: '张三'
-      }, {
-        id: '3456789',
-        account: '3456',
-        password: '123456',
-        name: '张三'
-      }, {
-        id: '3456789',
-        account: '3456',
-        password: '123456',
-        name: '张三'
-      }, {
-        id: '3456789',
-        account: '3456',
-        password: '123456',
-        name: '张三'
-      }],
+      item: this.$store.state.adminInformation,
       currentRow: null,
       templateRadio: '1'
     }
@@ -64,13 +39,21 @@ export default {
         path: '/detail'
       })
     }
+  },
+  mounted () {
+    axios.get('/api/admins/1/1000', {
+      headers: {
+        Authorization: this.$store.state.adminToken
+      }
+    })
+      .then(res => {
+        console.log(res.data.records)
+        this.$store.commit('changeAdmins', res.data.records)
+      })
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-  .footer
-    width 400px
-    margin auto
-    margin-top 30px
+
 </style>

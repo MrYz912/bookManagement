@@ -17,6 +17,7 @@
 import UserHeader from './components/Header'
 import UserSearch from './components/Search'
 import UserList from './components/List'
+import axios from 'axios'
 
 export default {
   name: 'UserHome',
@@ -27,12 +28,19 @@ export default {
   },
   mounted () {
     console.log(this.$store.state.userToken)
+    axios.get('/api/users/books/1/1000', {
+      headers: {
+        Authorization: this.$store.state.userToken
+      }
+    })
+      .then(res => {
+        this.$store.commit('changeBooks', res.data.records)
+        console.log('userHome', this.$store.state.bookInformation)
+      })
   }
 }
 </script>
 
 <style lang="stylus" scoped>
-  .footer
-    width 400px
-    margin auto
+
 </style>

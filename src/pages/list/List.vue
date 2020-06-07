@@ -19,7 +19,7 @@
         <el-table :data="this.item">
           <el-table-column prop="id" label="ID" width="100"></el-table-column>
           <el-table-column prop="isbn" label="ISBN" width="180"></el-table-column>
-          <el-table-column prop="name" label="西游记" width="130"></el-table-column>
+          <el-table-column prop="name" label="书名" width="130"></el-table-column>
           <el-table-column prop="author" label="作者" width="130"></el-table-column>
           <el-table-column prop="publisher" label="出版社" width="130"></el-table-column>
           <el-table-column prop="bookCategory.name" label="分类" width="130"></el-table-column>

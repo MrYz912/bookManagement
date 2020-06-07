@@ -9,15 +9,6 @@
         <admin-search></admin-search>
         <admin-list></admin-list>
       </el-main>
-
-      <el-footer>
-        <el-pagination
-          background
-          layout="prev, pager, next"
-          :total="100"
-          class="footer">
-        </el-pagination>
-      </el-footer>
     </el-container>
   </div>
 </template>
@@ -38,7 +29,5 @@ export default {
 </script>
 
 <style lang="stylus" scoped>
-  .footer
-    width 400px
-    margin auto
+
 </style>

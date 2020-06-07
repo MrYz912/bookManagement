@@ -1,13 +1,13 @@
 <template>
   <div>
-    <el-table :data="tableData">
-      <el-table-column prop="ISBN" label="ISBN" width="200"></el-table-column>
-      <el-table-column prop="name" label="西游记" width="150"></el-table-column>
+    <el-table :data="this.item">
+      <el-table-column prop="isbn" label="ISBN" width="200"></el-table-column>
+      <el-table-column prop="name" label="书名" width="150"></el-table-column>
       <el-table-column prop="author" label="作者" width="150"></el-table-column>
-      <el-table-column prop="publishingHouse" label="出版社" width="150"></el-table-column>
+      <el-table-column prop="publisher" label="出版社" width="150"></el-table-column>
+          <el-table-column prop="bookCategory.name" label="分类" width="130"></el-table-column>
       <el-table-column label="操作" width="2000">
         <el-button-group>
-            <el-button type="primary" @click="handleEdit(scope.$index, scope.row)" class="button">查看详情</el-button>
             <el-button type="warning" @click="handleBack(scope.$index, scope.row)" class="button">编辑</el-button>
             <el-button type="danger" @click="handleDelete(scope.$index, scope.row)" class="button">删除</el-button>
         </el-button-group>
@@ -17,41 +17,17 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'AdminList',
   data () {
     return {
-      tableData: [{
-        ISBN: '9787532512003',
-        name: '西游记',
-        author: '吴承恩',
-        publishingHouse: '上海古籍出版社'
-      }, {
-        ISBN: '7777532512003',
-        name: '西游记',
-        author: '吴承恩',
-        publishingHouse: '上海古籍出版社'
-      }, {
-        ISBN: '8888532512003',
-        name: '西游记',
-        author: '吴承恩',
-        publishingHouse: '上海古籍出版社'
-      }, {
-        ISBN: '9999532512003',
-        name: '西游记',
-        author: '吴承恩',
-        publishingHouse: '上海古籍出版社'
-      }],
+      item: this.$store.state.bookInformation,
       currentRow: null,
       templateRadio: '1'
     }
   },
   methods: {
-    handleEdit (index, row) {
-      this.$route.push({
-        path: '/detail'
-      })
-    },
     handleBack (index, row) {
       this.$route.push({
         path: '/detail'
@@ -61,16 +37,15 @@ export default {
       this.$route.push({
         path: '/detail'
       })
-    },
-    setCurrent (row) {
-      this.$refs.singleTable.setCurrentRow(row)
-    },
-    handleCurrentChange (val) {
-      this.currentRow = val
-    },
-    getTemplateRow (index, row) {
-      this.templateSelection = row
     }
+  },
+  mounted () {
+    axios.get('/api/books/1/1000')
+      .then(res => {
+        console.log('adminhome:list')
+        this.$store.commit('changeBooks', res.data.records)
+        console.log(this.$store.state.bookInformation)
+      })
   }
 }
 </script>
