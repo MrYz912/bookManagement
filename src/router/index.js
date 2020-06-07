@@ -14,6 +14,7 @@ import AdminInfo from '@/pages/adminInfo/AdminInfo'
 import EditUsers from '@/pages/editUsers/EditUsers'
 import EditAdmins from '@/pages/editAdmins/EditAdmins'
 import AddCategory from '@/pages/addCategory/AddCategory'
+import BookCategory from '@/pages/bookCategory/BookCategory'
 
 Vue.use(Router)
 
@@ -74,5 +75,9 @@ export default new Router({
     path: '/addCategory',
     name: 'AddCategory',
     component: AddCategory
+  }, {
+    path: '/bookCategory',
+    name: 'BookCategory',
+    component: BookCategory
   }]
 })

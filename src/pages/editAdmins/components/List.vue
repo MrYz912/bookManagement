@@ -49,6 +49,7 @@ export default {
       .then(res => {
         console.log(res.data.records)
         this.$store.commit('changeAdmins', res.data.records)
+        this.item = this.$store.state.adminInformation
       })
   }
 }

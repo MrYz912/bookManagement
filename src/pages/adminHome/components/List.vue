@@ -44,7 +44,7 @@ export default {
       .then(res => {
         console.log('adminhome:list')
         this.$store.commit('changeBooks', res.data.records)
-        console.log(this.$store.state.bookInformation)
+        this.item = this.$store.state.bookInformation
       })
   }
 }

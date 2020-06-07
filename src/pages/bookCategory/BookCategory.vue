@@ -18,13 +18,8 @@
 
       <el-main>
         <el-table :data="this.item">
-          <el-table-column prop="id" label="ID" width="100"></el-table-column>
-          <el-table-column prop="isbn" label="ISBN" width="180"></el-table-column>
-          <el-table-column prop="name" label="书名" width="130"></el-table-column>
-          <el-table-column prop="author" label="作者" width="130"></el-table-column>
-          <el-table-column prop="publisher" label="出版社" width="130"></el-table-column>
-          <el-table-column prop="bookCategory.name" label="分类" width="130"></el-table-column>
-          <el-table-column prop="userIdCard" label="借书人身份证"></el-table-column>
+          <el-table-column prop="id" label="ID" width="180"></el-table-column>
+          <el-table-column prop="name" label="名字"></el-table-column>
         </el-table>
       </el-main>
     </el-container>
@@ -32,12 +27,19 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  name: 'List',
+  name: 'BookCategory',
   data () {
     return {
-      item: this.$store.state.bookInformation
+      item: {}
     }
+  },
+  mounted () {
+    axios.get('/api/bookCategories/1/1000')
+      .then(res => {
+        this.item = res.data.records
+      })
   }
 }
 </script>

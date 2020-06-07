@@ -20,7 +20,9 @@
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit">修改</el-button>
-      <el-button>取消</el-button>
+      <router-link to="/userHome">
+        <el-button>取消</el-button>
+      </router-link>
     </el-form-item>
   </el-form>
 </template>
@@ -38,14 +40,12 @@ export default {
         name: null,
         phoneNumber: null,
         email: null
-      },
-      pass: null
+      }
     }
   },
   methods: {
     onSubmit () {
       console.log('submit')
-      this.form.password === this.pass ? this.form.password = null : this.form.password = this.form.password
       axios.put('/api/users', this.form, {
         headers: {
           Authorization: this.$store.state.userToken
@@ -63,10 +63,10 @@ export default {
       }
     })
       .then(res => {
-        // console.log(res)
         this.form = res.data
-        this.pass = this.form.password
-        console.log(this.pass)
+        console.log('infoPassword', this.form.password)
+        this.form.password = null
+        console.log(this.form.password)
         console.log(this.form)
       })
   }
