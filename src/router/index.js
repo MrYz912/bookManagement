@@ -13,6 +13,7 @@ import AddBooks from '@/pages/addBooks/AddBooks'
 import AdminInfo from '@/pages/adminInfo/AdminInfo'
 import EditUsers from '@/pages/editUsers/EditUsers'
 import EditAdmins from '@/pages/editAdmins/EditAdmins'
+import AddCategory from '@/pages/addCategory/AddCategory'
 
 Vue.use(Router)
 
@@ -69,5 +70,9 @@ export default new Router({
     path: '/editAdmins',
     name: 'EditAdmins',
     component: EditAdmins
+  }, {
+    path: '/addCategory',
+    name: 'AddCategory',
+    component: AddCategory
   }]
 })

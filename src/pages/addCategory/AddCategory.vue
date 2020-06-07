@@ -1,11 +1,13 @@
 <template>
   <el-form ref="form" :model="form" label-width="80px" class="form">
     <el-form-item label="种类名字">
-      <el-input v-model="form.isbn"></el-input>
+      <el-input v-model="form.name"></el-input>
     </el-form-item>
     <el-form-item>
       <el-button type="primary" @click="onSubmit">新增</el-button>
-      <el-button>取消</el-button>
+      <router-link to="/adminHome">
+        <el-button>取消</el-button>
+      </router-link>
     </el-form-item>
   </el-form>
 </template>
@@ -13,7 +15,7 @@
 <script>
 import axios from 'axios'
 export default {
-  name: 'AddBooks',
+  name: 'AddCategory',
   data () {
     return {
       form: {
@@ -25,7 +27,7 @@ export default {
     onSubmit () {
       console.log('submit!')
       console.log('addbooks' + this.$store.state.adminToken)
-      axios.post('/api/admins/books', this.form, {
+      axios.post('/api/admins/bookCategories', this.form, {
         headers: {
           Authorization: this.$store.state.adminToken
         }
@@ -37,7 +39,7 @@ export default {
           this.$router.push('/adminHome')
         })
         .catch(error => {
-          alert('书籍信息不符合规范')
+          alert('书籍种类信息不符合规范')
           console.log(error)
         })
     }

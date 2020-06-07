@@ -12,7 +12,7 @@
       <el-menu-item index="/editUsers">编辑用户信息</el-menu-item>
       <el-menu-item index="/editAdmins">编辑管理员信息</el-menu-item>
       <el-menu-item index="/addBooks">新增书籍</el-menu-item>
-      <el-menu-item index="/addBooks">新增书籍种类</el-menu-item>
+      <el-menu-item index="/addCategory">新增书籍种类</el-menu-item>
     </el-menu>
   </div>
 
