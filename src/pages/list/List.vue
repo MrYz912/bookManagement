@@ -17,15 +17,13 @@
 
       <el-main>
         <el-table :data="this.item">
-          <el-table-column prop="ISBN" label="ISBN" width="200"></el-table-column>
-          <el-table-column prop="name" label="西游记" width="150"></el-table-column>
-          <el-table-column prop="author" label="作者" width="150"></el-table-column>
-          <el-table-column prop="publishingHouse" label="出版社" width="150"></el-table-column>
-          <el-table-column label="操作">
-            <template slot-scope="scope">
-              <el-button type="primary" @click="handleEdit(scope.$index, scope.row)">查看详情</el-button>
-            </template>
-          </el-table-column>
+          <el-table-column prop="id" label="ID" width="100"></el-table-column>
+          <el-table-column prop="isbn" label="ISBN" width="180"></el-table-column>
+          <el-table-column prop="name" label="西游记" width="130"></el-table-column>
+          <el-table-column prop="author" label="作者" width="130"></el-table-column>
+          <el-table-column prop="publisher" label="出版社" width="130"></el-table-column>
+          <el-table-column prop="bookCategory.name" label="分类" width="130"></el-table-column>
+          <el-table-column prop="userIdCard" label="借书人身份证"></el-table-column>
         </el-table>
       </el-main>
     </el-container>
@@ -37,21 +35,8 @@ export default {
   name: 'List',
   data () {
     return {
-      item: [{
-        ISBN: '9787532512003',
-        name: '西游记',
-        author: '吴承恩',
-        publishingHouse: '上海古籍出版社'
-      }],
-      tableData: this.item,
-      total: '100'
-    }
-  },
-  methods: {
-    handleEdit (index, row) {
-      this.$route.push({
-        path: '/detail'
-      })
+      item: this.$store.state.bookInformation,
+      tableData: this.item
     }
   }
 }

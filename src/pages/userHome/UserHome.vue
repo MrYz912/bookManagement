@@ -9,15 +9,6 @@
         <user-search></user-search>
         <user-list></user-list>
       </el-main>
-
-      <el-footer>
-        <el-pagination
-          background
-          layout="prev, pager, next"
-          :total="100"
-          class="footer">
-        </el-pagination>
-      </el-footer>
     </el-contain>
   </div>
 </template>

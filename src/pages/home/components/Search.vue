@@ -29,8 +29,10 @@ export default {
       })
         .then(res => {
           console.log(res)
+          this.$store.commit('changeBooks', res.data.records)
+          console.log('search', this.$store.state.bookInformation)
+          this.$router.push('/list')
         })
-      // this.$router.push('/list')
     }
   }
 }

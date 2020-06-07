@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     userToken: null,
-    adminToken: null
+    adminToken: null,
+    bookInformation: []
   },
   mutations: {
     changeuLogin (state, userToken) {
@@ -14,6 +15,9 @@ export default new Vuex.Store({
     },
     changeaLogin (state, adminToken) {
       state.adminToken = adminToken
+    },
+    changeBooks (state, bookInformation) {
+      state.bookInformation = bookInformation
     }
   }
 })
