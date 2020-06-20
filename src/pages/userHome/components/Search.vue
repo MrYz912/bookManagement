@@ -2,9 +2,9 @@
 <div class="input">
   <el-input placeholder="请输入内容" v-model="input" class="input-with-select">
     <el-select v-model="select" slot="prepend" placeholder="请选择" class="select">
-      <el-option label="书名" value="1"></el-option>
-      <el-option label="作者" value="2"></el-option>
-      <el-option label="ISBN" value="3"></el-option>
+      <el-option label="名字" value="name"></el-option>
+      <el-option label="作者" value="author"></el-option>
+      <el-option label="分类" value="category"></el-option>
     </el-select>
     <el-button slot="append" icon="el-icon-search" @click="goto">搜索</el-button>
   </el-input>
@@ -12,8 +12,9 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
-  name: 'UserSearch',
+  name: 'Search',
   data () {
     return {
       input: null,
@@ -22,9 +23,16 @@ export default {
   },
   methods: {
     goto () {
-      this.$route.push({
-        path: '/list'
+      axios.post('/api/books/search/1/1000', {
+        sort: this.select,
+        search: this.input
       })
+        .then(res => {
+          console.log(res)
+          this.$store.commit('changeBooks', res.data.records)
+          console.log('search', this.$store.state.bookInformation)
+          this.$router.push('/userSearch')
+        })
     }
   }
 }
