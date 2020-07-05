@@ -9,7 +9,7 @@
           <el-table-column prop="bookCategory.name" label="分类" width="130"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
-          <el-button type="primary" @click="handleBack(scope.$index, scope.row)">还书</el-button>
+          <el-button type="primary" @click="handleBack(scope.row)">还书</el-button>
         </template>
       </el-table-column>
     </el-table>
@@ -27,7 +27,7 @@ export default {
     }
   },
   methods: {
-    handleBack (index, row) {
+    handleBack (row) {
       this.$route.push({
         path: '/detail'
       })
