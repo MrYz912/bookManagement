@@ -17,6 +17,7 @@
 </template>
 
 <script>
+import axios from 'axios'
 export default {
   name: 'UserList',
   data () {
@@ -28,9 +29,21 @@ export default {
   },
   methods: {
     handleBack (row) {
-      this.$route.push({
-        path: '/detail'
+      console.log(row.id)
+      console.log(this.$store.state.userToken)
+      axios.get('/api/users/books/giveBack/' + row.id, {
+        headers: {
+          Authorization: this.$store.state.userToken
+        }
       })
+        .then((res) => {
+          console.log(res)
+          this.$router.go(0)
+        })
+        .catch(error => {
+          alert('还书失败')
+          console.log(error)
+        })
     }
   }
 }

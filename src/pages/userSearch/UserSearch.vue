@@ -54,7 +54,7 @@ export default {
           }
         }).then((res) => {
           console.log(res)
-          this.$route.push('/userHome')
+          this.$router.push('/userHome')
         })
       } else {
         alert('该书已借出')
