@@ -4,7 +4,6 @@
       :default-active="this.$route.path"
       class="el-menu-demo"
       mode="horizontal"
-      @select="handleSelect"
       text-color="black"
       router="true"
     >

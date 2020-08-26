@@ -38,6 +38,7 @@ export default {
       })
         .then((res) => {
           console.log(res)
+          alert('还书成功')
           this.$router.go(0)
         })
         .catch(error => {
