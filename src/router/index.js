@@ -1,20 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Home from '@/pages/home/Home'
-import Login from '@/pages/login/Login'
-import SignUp from '@/pages/signUp/SignUp'
-import List from '@/pages/list/List'
-import Detail from '@/pages/detail/Detail'
-import UserHome from '@/pages/userHome/UserHome'
-import UserInfo from '@/pages/userInfo/UserInfo'
-import UserSearch from '@/pages/userSearch/UserSearch'
-import AdminHome from '@/pages/adminHome/AdminHome'
-import AddBooks from '@/pages/addBooks/AddBooks'
-import AdminInfo from '@/pages/adminInfo/AdminInfo'
-import EditUsers from '@/pages/editUsers/EditUsers'
-import EditAdmins from '@/pages/editAdmins/EditAdmins'
-import AddCategory from '@/pages/addCategory/AddCategory'
-import BookCategory from '@/pages/bookCategory/BookCategory'
+const Home = () => import('@/pages/home/Home')
+const Login = () => import('@/pages/login/Login')
+const SignUp = () => import('@/pages/login/Login')
+const List = () => import('@/pages/list/List')
+const UserHome = () => import('@/pages/userHome/UserHome')
+const UserInfo = () => import('@/pages/userInfo/UserInfo')
+const UserSearch = () => import('@/pages/userSearch/UserSearch')
+const AdminHome = () => import('@/pages/adminHome/AdminHome')
+const AddBooks = () => import('@/pages/addBooks/AddBooks')
+const AdminInfo = () => import('@/pages/adminInfo/AdminInfo')
+const EditUsers = () => import('@/pages/editUsers/EditUsers')
+const EditAdmins = () => import('@/pages/editAdmins/EditAdmins')
+const AddCategory = () => import('@/pages/addCategory/AddCategory')
+const BookCategory = () => import('@/pages/bookCategory/BookCategory')
 
 Vue.use(Router)
 
@@ -35,10 +34,6 @@ export default new Router({
     path: '/list',
     name: 'List',
     component: List
-  }, {
-    path: '/detail',
-    name: 'Detail',
-    component: Detail
   }, {
     path: '/userHome',
     name: 'UserHome',

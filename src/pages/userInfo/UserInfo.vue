@@ -64,10 +64,10 @@ export default {
     })
       .then(res => {
         this.form = res.data
-        console.log('infoPassword', this.form.password)
+        // console.log('infoPassword', this.form.password)
         this.form.password = null
-        console.log(this.form.password)
-        console.log(this.form)
+        // console.log(this.form.password)
+        // console.log(this.form)
       })
   }
 }

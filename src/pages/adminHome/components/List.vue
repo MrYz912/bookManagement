@@ -5,12 +5,12 @@
       <el-table-column prop="name" label="书名" width="150"></el-table-column>
       <el-table-column prop="author" label="作者" width="150"></el-table-column>
       <el-table-column prop="publisher" label="出版社" width="150"></el-table-column>
-          <el-table-column prop="bookCategory.name" label="分类" width="130"></el-table-column>
+      <el-table-column prop="bookCategory.name" label="分类" width="130"></el-table-column>
       <el-table-column label="操作" width="2000">
         <el-button-group>
           <template slot-scope="scope">
             <el-button type="warning" @click="handleEdit(scope.row)" class="button">编辑</el-button>
-            <el-dialog title="收货地址" :visible.sync="dialogFormVisible">
+            <el-dialog title="修改书籍" :visible.sync="dialogFormVisible">
               <el-form :model="form">
                 <el-form-item label="isbn">
                   <el-input v-model="form.isbn" clearable></el-input>

@@ -53,7 +53,7 @@ export default {
             Authorization: this.$store.state.userToken
           }
         }).then((res) => {
-          console.log(res)
+          // console.log(res)
           this.$router.push('/userHome')
         })
       } else {
