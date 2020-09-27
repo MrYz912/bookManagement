@@ -1,56 +1,39 @@
 <template>
   <div>
-    <el-table :data="this.item">
-      <el-table-column prop="isbn" label="ISBN" width="200"></el-table-column>
-      <el-table-column prop="name" label="书名" width="150"></el-table-column>
-      <el-table-column prop="author" label="作者" width="150"></el-table-column>
-      <el-table-column prop="publisher" label="出版社" width="150"></el-table-column>
-      <el-table-column prop="bookCategory.name" label="分类" width="130"></el-table-column>
-      <el-table-column label="操作" width="2000">
-        <el-button-group>
-          <template slot-scope="scope">
-            <el-button type="warning" @click="handleEdit(scope.row)" class="button">编辑</el-button>
-            <el-dialog title="修改书籍" :visible.sync="dialogFormVisible">
-              <el-form :model="form">
-                <el-form-item label="isbn">
-                  <el-input v-model="form.isbn" clearable></el-input>
-                </el-form-item>
-                <el-form-item label="书名">
-                  <el-input v-model="form.name" clearable></el-input>
-                </el-form-item>
-                <el-form-item label="作者">
-                  <el-input v-model="form.author" clearable ></el-input>
-                </el-form-item>
-                <el-form-item label="出版社">
-                  <el-input v-model="form.publisher" clearable></el-input>
-                </el-form-item>
-                <el-form-item label="分类">
-                  <el-input v-model="form.bookCategoryId" clearable></el-input>
-                </el-form-item>
-              </el-form>
-              <div slot="footer" class="dialog-footer">
-                <el-button @click="dialogFormVisible = false">取 消</el-button>
-                <el-button type="primary" @click="dialogFormVisible = false">确 定</el-button>
-              </div>
-            </el-dialog>
-            <el-button type="danger" @click="handleDelete(scope.$index, scope.row)" class="button">删除</el-button>
-          </template>
-        </el-button-group>
-      </el-table-column>
-    </el-table>
+    <table-render
+    :data="this.item"
+    :columnData="this.column"
+    >
+    </table-render>
   </div>
 </template>
 
 <script>
 import axios from 'axios'
+import TableRender from '@/pages/tools/tableRender'
 export default {
   name: 'AdminList',
+  components: {TableRender},
   data () {
     return {
       item: this.$store.state.bookInformation,
       currentRow: null,
       templateRadio: '1',
       dialogFormVisible: false,
+      column: [
+        {prop: 'isbn', label: 'ISBN'},
+        {prop: 'name', label: '书名'},
+        {prop: 'author', label: '作者'},
+        {prop: 'publisher', label: '出版社'},
+        {prop: 'bookCategory.name', label: '分类'},
+        {
+          prop: 'operate',
+          label: '操作',
+          render: (h, {row, column}) => {
+            return h('el-button', {width: '300'}, '编辑')
+          }
+        }
+      ],
       form: {
         isbn: null,
         name: null,
@@ -72,7 +55,7 @@ export default {
     }
   },
   mounted () {
-    axios.get('/api/books/1/1000')
+    axios.get('/api/books/1/20')
       .then(res => {
         console.log('adminhome:list')
         this.$store.commit('changeBooks', res.data.records)
