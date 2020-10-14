@@ -1,11 +1,11 @@
 <template>
   <div>
     <el-table :data="this.item">
-      <el-table-column prop="idCard" label="身份证号" width="200"></el-table-column>
-      <el-table-column prop="account" label="账号" width="150"></el-table-column>
-      <el-table-column prop="name" label="名字" width="100"></el-table-column>
-      <el-table-column prop="phoneNumber" label="手机号" width="150"></el-table-column>
-      <el-table-column prop="email" label="邮箱" width="200"></el-table-column>
+      <el-table-column prop="idCard" label="身份证号" width="250"></el-table-column>
+      <el-table-column prop="account" label="账号" width="200"></el-table-column>
+      <el-table-column prop="name" label="名字" width="200"></el-table-column>
+      <el-table-column prop="phoneNumber" label="手机号" width="230"></el-table-column>
+      <el-table-column prop="email" label="邮箱" width="230"></el-table-column>
       <el-table-column label="操作">
         <template slot-scope="scope">
         <el-button-group>

@@ -2,7 +2,7 @@ import Vue from 'vue'
 import Router from 'vue-router'
 const Home = () => import('@/pages/home/Home')
 const Login = () => import('@/pages/login/Login')
-const SignUp = () => import('@/pages/login/Login')
+const SignUp = () => import('@/pages/SignUp/SignUp')
 const List = () => import('@/pages/list/List')
 const UserHome = () => import('@/pages/userHome/UserHome')
 const UserInfo = () => import('@/pages/userInfo/UserInfo')

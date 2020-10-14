@@ -25,7 +25,9 @@
     </el-form-item> -->
     <el-form-item>
       <el-button type="primary" @click="onSubmit">新增</el-button>
-      <el-button>取消</el-button>
+      <router-link to="/adminHome">
+        <el-button>取消</el-button>
+      </router-link>
     </el-form-item>
   </el-form>
 </template>

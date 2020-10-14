@@ -25,12 +25,11 @@ export default {
         {prop: 'name', label: '书名'},
         {prop: 'author', label: '作者'},
         {prop: 'publisher', label: '出版社'},
-        {prop: 'bookCategory.name', label: '分类'},
         {
           prop: 'operate',
           label: '操作',
           render: (h, {row, column}) => {
-            return h('el-button', {width: '300'}, '编辑')
+            return h('el-button', '编辑')
           }
         }
       ],
@@ -60,6 +59,8 @@ export default {
         console.log('adminhome:list')
         this.$store.commit('changeBooks', res.data.records)
         this.item = this.$store.state.bookInformation
+        console.log(this.item)
+        console.log('adminHome', this.item.author)
       })
   }
 }

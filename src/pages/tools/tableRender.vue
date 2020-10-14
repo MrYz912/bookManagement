@@ -2,13 +2,13 @@
   <el-table
     v-bind="$attrs"
     v-on="$listeners"
-    height="1500">
+    height="600">
     <template v-for="column in columnData">
       <el-table-column
       :key="column.id"
       v-bind="column"
       v-on="column"
-      width="200">
+      width="300">
         <template slot-scope="scope">
           <table-column-expand
             v-if="column.render"
