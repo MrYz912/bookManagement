@@ -18,6 +18,8 @@ export default {
   methods: {
     exit () {
       this.$store.commit('changeuLogin', null)
+      this.$store.commit('changeUsers', null)
+      this.$store.commit('changeBooks', [])
     }
   }
 }

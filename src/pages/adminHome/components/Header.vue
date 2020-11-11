@@ -14,7 +14,6 @@
       <el-menu-item index="/addCategory">新增书籍种类</el-menu-item>
     </el-menu>
   </div>
-
 </template>
 
 <script>
@@ -23,6 +22,8 @@ export default {
   methods: {
     exit () {
       this.$store.commit('changeaLogin', null)
+      this.$store.commit('changeAdmins', null)
+      this.$store.commit('changeBooks', [])
     }
   }
 }
